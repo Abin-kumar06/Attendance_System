@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Face Enrollment - Dark Theme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#57C200",
+                        "primary-light": "#72BF45",
+                        "primary-dark": "#4a9e00",
+                        "background-dark": "#1C1A1A",
+                        "surface-dark": "#000000",
+                        "surface-light": "#1C1A1A",
+                        "text-primary-dark": "#ffffff",
+                        "text-secondary-dark": "#9ca3af",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        .scanner-animation {
+            animation: scan 3s linear infinite;
+        }
+        @keyframes scan {
+            0%, 100% { transform: translateY(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            50% { transform: translateY(100%); }
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#0b0b0b] font-sans text-white antialiased">
+<div class="max-w-md mx-auto min-h-screen flex flex-col relative bg-[#0b0b0b]">
+<!-- <header class="flex items-center justify-between px-6 py-6 bg-[#000000] z-10 sticky top-0">
+  <button onclick="goHome()" class="p-2 rounded-full hover:bg-[#1C1A1A] transition-colors text-white -ml-2">
+    <span class="material-symbols-outlined text-2xl font-bold">arrow_back</span>
+  </button>
+  <h1 class="text-xl font-bold text-white flex-1 text-center pr-8">Face Enrollment</h1>
+</header> -->
+
+<main class="flex-1 px-5 py-2 flex flex-col gap-6 overflow-y-auto mb-24">
+<div class="bg-[#111111] rounded-2xl p-4 border border-[#2d2a2a] flex items-center gap-4 relative overflow-hidden group">
+<div class="relative flex-shrink-0">
+<img alt="Maria Garcia" class="w-14 h-14 rounded-full object-cover border-2 border-[#57C200]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAC73PVqxOYhNGTv5S1mBph7ZY3SC9ahDflpdvybop_fVVX-W9gKLZjY_T7uGpWO0GBY_bqgtSJE__Y6bnCGOqYqeZ9BX9-6Za2tosQMAAwijY4CGOHYaxFD8dH0ZErQKaEEEw4fioU290aqrZRAWwJkzCnpDagPd3p4AmoybCBw0G7drFBPmarZnMfu8G1ZLIMJsWqzVuRi640z0TuUhs9d6LZn5rzGkhoQRzu5n6DchW5_Yrle5oAZKYNmL5gFsI038V0u_NMMI"/>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[#57C200] rounded-full border-2 border-[#111111]"></div>
+</div>
+<div class="flex-1 min-w-0">
+<label class="block text-xs font-medium text-gray-400 mb-0.5" for="employee-select">Selected Employee</label>
+<div class="relative">
+<select class="block w-full pl-0 pr-8 py-0 bg-transparent border-none focus:ring-0 text-base font-bold text-white cursor-pointer appearance-none hover:text-[#72BF45] transition-colors truncate" id="employee-select">
+<option class="bg-[#1C1A1A] text-white">Maria Garcia</option>
+<option class="bg-[#1C1A1A] text-white">John Doe</option>
+<option class="bg-[#1C1A1A] text-white">Sarah Smith</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 text-[#57C200] pointer-events-none text-xl">expand_more</span>
+</div>
+<p class="text-xs text-gray-500 mt-0.5 truncate">EMP001 - HR Manager</p>
+</div>
+</div>
+<div class="text-center space-y-3 px-2 mt-2">
+<h2 class="text-2xl font-bold text-white">Position Your Face</h2>
+<p class="text-sm text-gray-400 leading-relaxed max-w-[90%] mx-auto">
+                Center your face within the frame. Ensure good lighting and remove any accessories like sunglasses or masks.
+            </p>
+</div>
+<div class="relative flex justify-center items-center py-2">
+<div class="relative w-64 h-64 sm:w-72 sm:h-72">
+<div class="absolute inset-0 bg-[#e0d8c8] rounded-full opacity-90 scale-[1.05]"></div>
+<div class="absolute inset-0 bg-[#000000] rounded-full overflow-hidden border-4 border-[#e0d8c8] shadow-2xl flex items-center justify-center relative z-10">
+<img alt="Camera Feed" class="w-full h-full object-cover opacity-90 scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArfO8RX9QRLe0-pqOe-Q2cxsRg3oioAd1q6AxiYKlA9UnwgJ9hu0UnZkbT6mu3XEosOnIHKBxGxIb5v1iggWI5yQDtw-CljI6S5Yzx-k-BY-YsgTZ-wnLeoQQ6JvLzGzWFOX1v3WTq3Hhe_xYkqPQSxKxz8J0lBnmio1jp-LXddm5MAXhOc2R7LA__Grc32LA3ybviGriPk-Q8_mkfuQHAHPDMuTaDYPI2rNCVqRxVFXJz_CBRdsX_krlKiybbUICFG5yg6FBu8jQ"/>
+</div>
+<svg class="absolute inset-[-10px] w-[calc(100%+20px)] h-[calc(100%+20px)] z-30 pointer-events-none text-[#57C200]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" viewBox="0 0 100 100">
+<path class="drop-shadow-lg" d="M 28 12 A 40 40 0 0 0 12 28"></path>
+<path class="drop-shadow-lg" d="M 72 12 A 40 40 0 0 1 88 28"></path>
+<path class="drop-shadow-lg" d="M 88 72 A 40 40 0 0 1 72 88"></path>
+<path class="drop-shadow-lg" d="M 12 72 A 40 40 0 0 0 28 88"></path>
+</svg>
+<div class="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 z-40 bg-black px-4 py-1.5 rounded-full shadow-lg border border-[#2d2a2a] flex items-center gap-2 min-w-[140px] justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-[#57C200] animate-pulse shadow-[0_0_8px_#57C200]"></div>
+<span class="text-sm font-medium text-white tracking-wide">Detecting...</span>
+</div>
+</div>
+</div>
+<div class="bg-[#1C1A1A] rounded-2xl p-5 border border-[#333] mt-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#57C200] text-xl mt-0.5">info</span>
+<div class="space-y-1.5">
+<p class="text-sm font-bold text-white">Tips for success</p>
+<ul class="space-y-1.5">
+<li class="flex items-center text-xs text-gray-400">
+<span class="w-1 h-1 bg-gray-500 rounded-full mr-2"></span>
+                            Hold your phone at eye level
+                        </li>
+<li class="flex items-center text-xs text-gray-400">
+<span class="w-1 h-1 bg-gray-500 rounded-full mr-2"></span>
+                            Avoid direct sunlight behind you
+                        </li>
+<li class="flex items-center text-xs text-gray-400">
+<span class="w-1 h-1 bg-gray-500 rounded-full mr-2"></span>
+                            Keep a neutral expression
+                        </li>
+</ul>
+</div>
+</div>
+</div>
+<button class="w-full bg-[#57C200] hover:bg-[#4a9e00] text-white font-bold text-lg py-4 px-6 rounded-2xl shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2 mt-6 mb-6">
+<span class="material-symbols-outlined text-2xl font-bold">camera_alt</span>
+            Enroll Face
+        </button>
+</main>
+
+<nav class="fixed bottom-0 w-full bg-[#1C1A1A] border-t border-white/5 pb-safe pt-2 px-6 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] z-50 max-w-md mx-auto">
+  <div class="flex justify-around items-center h-16">
+    <button onclick="navigate('home.html')" class="flex flex-col items-center justify-center gap-1 w-16 text-gray-500 hover:text-white transition-colors">
+      <span class="material-symbols-outlined text-2xl">grid_view</span>
+      <span class="text-[10px] font-medium">Dashboard</span>
+    </button>
+    <button onclick="navigate('clock.html')" class="flex flex-col items-center justify-center gap-1 w-16 text-gray-500 hover:text-white transition-colors">
+      <span class="material-symbols-outlined text-2xl">schedule</span>
+      <span class="text-[10px] font-medium">Clock</span>
+    </button>
+    <button onclick="navigate('enrollment.html')" class="flex flex-col items-center justify-center gap-1 w-16 text-primary">
+      <span class="material-symbols-outlined text-2xl">person_add</span>
+      <span class="text-[10px] font-medium">Enroll</span>
+    </button>
+  </div>
+  <div class="h-5 w-full"></div>
+</nav>
+</div>
+
+<script>
+function goHome() {
+    window.location.href = 'home.html';
+}
+
+function navigate(page) {
+    window.location.href = page;
+}
+</script>
+
+</body></html>

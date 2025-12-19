@@ -1,0 +1,7 @@
+Date,Employee_ID,Name,Check_In,Check_Out,Hours_Worked,Status,Mood
+2025-12-19,06,abeee,13:25:20,13:25:25,0.00,Complete,Sad
+2025-12-19,06,abeee,13:26:08,13:26:30,0.01,Complete,Sad
+2025-12-19,06,abeee,13:27:43,13:28:41,0.02,Complete,Sad
+2025-12-19,06,abeee,13:31:24,13:31:28,0.00,Complete,Sad
+2025-12-19,06,abeee,13:31:34,,0,Present,Sad
+2025-12-19,03,Abeee,13:35:54,,0,Present,Sad

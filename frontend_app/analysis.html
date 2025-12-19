@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Overall Attendance Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#57C200", // Vibrant Green
+                        secondary: "#72BF45", // Lighter Green
+                        "background-dark": "#000000", // Deep Black
+                        "surface-dark": "#1C1A1A", // Dark Gray for cards
+                        "text-muted": "#9ca3af",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white font-display antialiased overflow-x-hidden pb-24">
+<header class="sticky top-0 z-50 bg-background-dark/95 backdrop-blur-sm px-4 pt-12 pb-4 flex items-center justify-between border-b border-white/5">
+<div>
+<h1 class="text-xl font-bold tracking-tight text-white">Overall Attendance</h1>
+<p class="text-sm text-text-muted">Dashboard</p>
+</div>
+<button class="flex items-center gap-2 bg-surface-dark hover:bg-white/10 transition-colors px-3 py-1.5 rounded-full border border-white/10">
+<span class="text-sm font-medium text-primary">This Week</span>
+<span class="material-symbols-outlined text-primary text-sm">expand_more</span>
+</button>
+</header>
+<section class="mt-6 px-4">
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+<div class="min-w-[140px] flex-1 bg-surface-dark p-5 rounded-2xl border border-white/5 flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<div class="p-2 rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-primary text-xl">person_check</span>
+</div>
+</div>
+<div>
+<p class="text-sm text-text-muted font-medium">Attendance</p>
+<p class="text-2xl font-bold text-white mt-1">94%</p>
+</div>
+<div class="flex items-center text-xs text-primary font-medium bg-primary/10 w-fit px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[10px] mr-1">trending_up</span>
+                    +2%
+                </div>
+</div>
+<div class="min-w-[140px] flex-1 bg-surface-dark p-5 rounded-2xl border border-white/5 flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<div class="p-2 rounded-full bg-secondary/10">
+<span class="material-symbols-outlined text-secondary text-xl">schedule</span>
+</div>
+</div>
+<div>
+<p class="text-sm text-text-muted font-medium">Avg. Hours</p>
+<p class="text-2xl font-bold text-white mt-1">7h 45m</p>
+</div>
+<div class="flex items-center text-xs text-primary font-medium bg-primary/10 w-fit px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[10px] mr-1">trending_up</span>
+                    +15m
+                </div>
+</div>
+<div class="min-w-[140px] flex-1 bg-surface-dark p-5 rounded-2xl border border-white/5 flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<div class="p-2 rounded-full bg-red-500/10">
+<span class="material-symbols-outlined text-red-400 text-xl">event_busy</span>
+</div>
+</div>
+<div>
+<p class="text-sm text-text-muted font-medium">Absences</p>
+<p class="text-2xl font-bold text-white mt-1">12</p>
+</div>
+<div class="flex items-center text-xs text-red-400 font-medium bg-red-500/10 w-fit px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[10px] mr-1">trending_down</span>
+                    -3%
+                </div>
+</div>
+</div>
+</section>
+<section class="mt-6 px-4">
+<div class="bg-surface-dark rounded-2xl p-5 border border-white/5">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-bold text-white">Weekly Attendance</h3>
+<p class="text-xs text-text-muted">Mon - Fri</p>
+</div>
+<div class="flex items-center gap-1 text-primary text-sm font-medium">
+                    +5% <span class="text-text-muted font-normal text-xs">vs last week</span>
+</div>
+</div>
+<div class="h-48 grid grid-cols-5 gap-3 items-end">
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="w-full bg-white/5 rounded-t-md relative h-full flex items-end overflow-hidden group-hover:bg-white/10 transition-colors">
+<div class="w-full bg-secondary h-[40%] rounded-t-md"></div>
+</div>
+<span class="text-xs text-text-muted font-medium">Mon</span>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="w-full bg-white/5 rounded-t-md relative h-full flex items-end overflow-hidden group-hover:bg-white/10 transition-colors">
+<div class="w-full bg-primary h-[85%] rounded-t-md shadow-[0_0_15px_rgba(87,194,0,0.2)]"></div>
+</div>
+<span class="text-xs text-white font-bold">Tue</span>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="w-full bg-white/5 rounded-t-md relative h-full flex items-end overflow-hidden group-hover:bg-white/10 transition-colors">
+<div class="w-full bg-secondary h-[30%] rounded-t-md"></div>
+</div>
+<span class="text-xs text-text-muted font-medium">Wed</span>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="w-full bg-white/5 rounded-t-md relative h-full flex items-end overflow-hidden group-hover:bg-white/10 transition-colors">
+<div class="w-full bg-secondary h-[80%] rounded-t-md"></div>
+</div>
+<span class="text-xs text-text-muted font-medium">Thu</span>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="w-full bg-white/5 rounded-t-md relative h-full flex items-end overflow-hidden group-hover:bg-white/10 transition-colors">
+<div class="w-full bg-primary h-[95%] rounded-t-md shadow-[0_0_15px_rgba(87,194,0,0.2)]"></div>
+</div>
+<span class="text-xs text-text-muted font-medium">Fri</span>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-6 px-4">
+<div class="bg-surface-dark rounded-2xl p-5 border border-white/5 flex items-center justify-between gap-4">
+<div class="flex flex-col gap-1 flex-[2_2_0px]">
+    
+<video id="video" autoplay playsinline class="w-full h-64 rounded-xl mb-4"></video>
+<button onclick="captureAndSend()" class="bg-primary text-white py-2 px-4 rounded-lg mb-4">Detect Emotion</button>
+
+<h3 class="text-lg font-bold text-white">Team Mood</h3>
+<p class="text-text-muted text-sm font-normal leading-relaxed">Most employees are feeling productive today.</p>
+<div class="flex gap-3 mt-3">
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-xs text-white">75% Happy</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-white/20"></div>
+<span class="text-xs text-white">25% Stressed</span>
+</div>
+</div>
+</div>
+<div class="relative w-24 h-24 flex-shrink-0">
+<div class="absolute inset-0 rounded-full border-[8px] border-white/5"></div>
+<svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="75, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">sentiment_satisfied</span>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-6 px-4">
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-lg font-bold text-white">Recent Activity</h3>
+<button class="text-sm text-primary font-medium hover:text-secondary transition-colors">View All</button>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between p-3 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10" data-alt="Profile picture of Sarah M." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3NHAEM3jD71wquqle4rz7FL-NgHYejJVLO1QdfctbVDhWKzeUeob4FG5DEsjSZZQQCvvzSb-SEtqY70N_0XYegMrt830kRWub7hr87DRpJPs0egBZsBHvE2GXWB8kLOsXlSeyzZ6_OKf88ZRmNT-gZSZt15c5eB1s9t_K5fq1bEtt5SaLAmL_aYnSi3PFZGVWnA9HUDlKqZo69SpgwezBqzQ2QNdZ-obbAgdWsQdZGh6c-RGZAsHjbV1XwZg2IxibwlWbWBIFaMo");'></div>
+<div>
+<p class="text-sm font-semibold text-white">Sarah M. checked in</p>
+<p class="text-xs text-text-muted">Product Design • 09:00 AM</p>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-medium">On Time</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10" data-alt="Profile picture of John D." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIpdOWTnZcEJa0gpbsqbyuBZqTA7IDD5XqsE36xfZLw3NEG5130D3EFSYeawOrPbi119WNf2VaONX6dSxc6jNbUw_fzqPYQdZ5IOQcQQRRUe4AaWpgA5AqcGYpgwZ4tHHoY-n5BkBXUKVEmGUECyCobyu6MWOKxzzCaUwg6g6qc4q_nJifvgHqnjyRflqCKg3GO5tPekNSwxCj8-0XzIP7V4ZVQ_HgjsiRpr0pNOnY2h3F4KKOL6p_XAu5MMq53pVFZjZkzGKiZ8g");'></div>
+<div>
+<p class="text-sm font-semibold text-white">John D. Late Arrival</p>
+<p class="text-xs text-text-muted">Engineering • 10:15 AM</p>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-yellow-500/10 text-yellow-500 text-xs font-medium">Late</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10" data-alt="Profile picture of Mike T." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfJP85QD2KfTTH5SVXMNo4aVjS3IyRe9XoigPBkCz_SmczIzmqE4_bZGNvamKyey3WNWp0eS-GiK6a4csJAw2MrZE95YlQsjS1AcIx6nnFhGJda8HdoFtU0BTqapYTaK8v3xVDIKTF2VTo2BMeJSuuEVt3FH5XxtOfO3TCJa9uTCyarIBZKaJQTWO90F5mB5oYT2LcnulLYmIyZuuhoijhONOvFnepKJAbygTL-8dmgk30xXVNhgx1IF9jVF1HvnK20dXogEkyogc");'></div>
+<div>
+<p class="text-sm font-semibold text-white">Mike T. Sick Leave</p>
+<p class="text-xs text-text-muted">Marketing • Today</p>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-red-500/10 text-red-400 text-xs font-medium">Absent</div>
+</div>
+</div>
+</section>
+<nav class="fixed bottom-0 left-0 right-0 bg-surface-dark/95 backdrop-blur-md border-t border-white/5 pb-6 pt-2 px-6 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 p-2 group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform filled">dashboard</span>
+<span class="text-[10px] font-medium text-primary">Dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 group text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">group</span>
+<span class="text-[10px] font-medium">Employees</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 group text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">folder_open</span>
+<span class="text-[10px] font-medium">Projects</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 group text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">event_busy</span>
+<span class="text-[10px] font-medium">Leave</span>
+</button>
+</nav>
+
+<script>
+  // Start webcam
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      document.getElementById('video').srcObject = stream;
+    })
+    .catch(err => console.error("Webcam error:", err));
+
+  // Capture image and send to Python backend
+  async function captureAndSend() {
+    const video = document.getElementById('video');
+    const canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    const base64Image = canvas.toDataURL("image/png");
+
+    try {
+      const response = await fetch('http://10.0.2.2:5000/detect_emotion', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ "image_base64": base64Image })
+      });
+      const data = await response.json();
+      alert("Detected Emotion: " + data.emotion + "\nMessage: " + data.message);
+    } catch (err) {
+      console.error("Error calling backend:", err);
+    }
+  }
+</script>
+
+
+
+</body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

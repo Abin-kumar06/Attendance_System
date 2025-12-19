@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Face Recognition Clock In/Out - Image Match Dark Theme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                primary: "#72BF45",
+                accent: "#57C200",
+                background: "#0a0a0a",
+                surface: "#1C1A1A",
+                text: "#ffffff",
+                subtext: "#9ca3af",
+                card: "#222222"
+            },
+            fontFamily: {
+                display: ["Inter", "sans-serif"]
+            },
+            boxShadow: {
+                'glow': '0 0 25px rgba(114, 191, 69, 0.2)',
+                'glow-accent': '0 0 35px rgba(87, 194, 0, 0.3)'
+            }
+        }
+    }
+};
+</script>
+<style>
+body { background-color: #0a0a0a; min-height: max(884px, 100dvh); }
+.no-scrollbar::-webkit-scrollbar {display:none;}
+.no-scrollbar {-ms-overflow-style:none;scrollbar-width:none;}
+.material-symbols-outlined.filled {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+}
+#successMessage {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, max-height 0.3s ease-in-out;
+    max-height: 500px;
+    opacity: 1;
+}
+#successMessage.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+</style>
+</head>
+
+<body class="bg-background text-text font-display antialiased min-h-screen selection:bg-primary selection:text-white">
+
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto bg-background overflow-hidden shadow-2xl border-x border-white/5">
+
+<main class="flex-1 flex flex-col items-center px-6 w-full pt-6 pb-28 overflow-y-auto no-scrollbar">
+  <div class="w-full bg-surface rounded-xl p-4 mb-6 text-center shadow-lg border border-white/5">
+    <h2 class="text-4xl font-bold tracking-tight text-white mb-2" id="clock">06:03:22 PM</h2>
+    <p class="text-subtext text-sm font-medium">Saturday, 13 December</p>
+  </div>
+
+  <div class="w-full bg-surface rounded-xl p-1.5 flex mb-10 border border-white/5">
+    <button id="clockInBtn" onclick="switchTab('in')" class="flex-1 bg-primary text-white font-medium py-3 rounded-lg text-sm transition-all shadow-lg">Clock In</button>
+    <button id="clockOutBtn" onclick="switchTab('out')" class="flex-1 text-subtext font-medium py-3 rounded-lg text-sm hover:text-white transition-colors">Clock Out</button>
+  </div>
+
+  <div class="relative w-64 h-64 mb-10 flex items-center justify-center">
+    <div class="absolute inset-0 rounded-full border-[3px] border-primary shadow-glow-accent z-10"></div>
+    <div class="relative w-full h-full rounded-full overflow-hidden bg-surface flex items-center justify-center">
+      <video id="video" autoplay playsinline class="w-full h-full object-cover"></video>
+    </div>
+  </div>
+
+  <button id="capture" class="bg-primary text-white py-3 px-6 rounded-lg font-semibold shadow-lg hover:bg-accent transition-colors mb-6">Capture Face</button>
+
+  <!-- Success Message (hidden by default) -->
+  <div id="successMessage" class="w-full bg-surface rounded-xl p-6 border border-primary/30 shadow-[0_0_15px_rgba(87,194,0,0.1)] text-center mb-4 relative overflow-hidden hidden">
+    <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center mx-auto mb-3 shadow-lg">
+      <span class="material-symbols-outlined text-white text-xl font-bold">check</span>
+    </div>
+    <h3 class="text-primary text-sm font-medium mb-4" id="statusText">Clock-In Successful</h3>
+  </div>
+
+  <!-- Employee Details and Mood Card -->
+  <div id="employeeCard" class="w-full bg-surface rounded-xl p-6 border border-white/5 text-center">
+    <div class="text-white text-xl font-bold mb-1" id="employeeName">EMP00123 - Alexia Christian</div>
+    <div class="flex items-center justify-center pt-1 border-t border-black/5">
+      <span class="text-2xl" id="moodEmoji">😊</span>
+      <span class="text-white font-medium" id="moodText">Happy</span>
+    </div>
+  </div>
+</main>
+
+<nav class="fixed bottom-0 w-full bg-surface border-t border-white/5 pb-safe pt-2 px-6 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] z-50 max-w-md mx-auto">
+  <div class="flex justify-around items-center h-16">
+    <button onclick="navigate('home.html')" class="flex flex-col items-center justify-center gap-1 w-16 text-gray-500 hover:text-white transition-colors">
+      <span class="material-symbols-outlined text-2xl">grid_view</span>
+      <span class="text-[10px] font-medium">Dashboard</span>
+    </button>
+    <button onclick="navigate('clock.html')" class="flex flex-col items-center justify-center gap-1 w-16 text-primary">
+      <span class="material-symbols-outlined filled text-2xl">schedule</span>
+      <span class="text-[10px] font-medium">Clock</span>
+    </button>
+    <button onclick="navigate('enrollment.html')" class="flex flex-col items-center justify-center gap-1 w-16 text-gray-500 hover:text-white transition-colors">
+      <span class="material-symbols-outlined text-2xl">person_add</span>
+      <span class="text-[10px] font-medium">Enroll</span>
+    </button>
+  </div>
+  <div class="h-5 w-full"></div>
+</nav>
+
+</div>
+
+<script>
+let currentTab = 'in';
+
+function goHome() {
+    window.location.href = 'home.html';
+}
+
+function navigate(page) {
+    window.location.href = page;
+}
+
+function switchTab(tab) {
+    currentTab = tab;
+    const clockInBtn = document.getElementById('clockInBtn');
+    const clockOutBtn = document.getElementById('clockOutBtn');
+    const statusText = document.getElementById('statusText');
+    
+    if (tab === 'in') {
+        clockInBtn.classList.add('bg-primary', 'text-white', 'shadow-lg');
+        clockInBtn.classList.remove('text-subtext');
+        clockOutBtn.classList.remove('bg-primary', 'text-white', 'shadow-lg');
+        clockOutBtn.classList.add('text-subtext');
+        statusText.textContent = 'Clock-In Successful';
+    } else {
+        clockOutBtn.classList.add('bg-primary', 'text-white', 'shadow-lg');
+        clockOutBtn.classList.remove('text-subtext');
+        clockInBtn.classList.remove('bg-primary', 'text-white', 'shadow-lg');
+        clockInBtn.classList.add('text-subtext');
+        statusText.textContent = 'Clock-Out Successful';
+    }
+}
+
+function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    document.getElementById('clock').innerHTML = `${hours}:${minutes}:${seconds} <span class="text-2xl align-baseline text-white/80 font-normal">${ampm}</span>`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// Access webcam
+const video = document.getElementById('video');
+
+navigator.mediaDevices.getUserMedia({ video: true })
+  .then(stream => { video.srcObject = stream; })
+  .catch(err => console.error('Camera access error:', err));
+
+document.getElementById('capture').addEventListener('click', async () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    const imageData = canvas.toDataURL('image/jpeg');
+
+    try {
+        const response = await fetch('http://192.168.1.70:5000/detect_emotion', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ image: imageData })
+        });
+        const result = await response.json();
+        
+        // Update mood in the employee card
+        document.getElementById('moodEmoji').textContent = result.emoji;
+        document.getElementById('moodText').textContent = result.emotion;
+        
+        // Show success message
+        const successMessage = document.getElementById('successMessage');
+        const statusText = document.getElementById('statusText');
+        statusText.textContent = currentTab === 'in' ? 'Clock-In Successful' : 'Clock-Out Successful';
+        successMessage.classList.remove('hidden');
+        
+        // Hide success message after 3 seconds
+        setTimeout(() => {
+            successMessage.classList.add('hidden');
+        }, 3000);
+        
+    } catch (err) {
+        console.error(err);
+        alert('Error connecting to backend');
+    }
+});
+
+</script>
+
+</body>
+</html>

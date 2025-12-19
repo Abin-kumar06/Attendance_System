@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Attendance Home Screen - Dark Theme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#57C200", 
+                        "secondary": "#72BF45",
+                        "background-base": "#000000",
+                        "background-surface": "#1C1A1A",
+                        "text-main": "#ffffff",
+                        "text-muted": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+
+        function navigate(page) {
+            console.log('Navigating to:', page);
+            window.location.href = page;
+        }
+
+        // Get proverb of the day (consistent for the same day)
+        function getProverbOfDay() {
+            const proverbs = [
+                "Success is the sum of small efforts repeated day in and day out.",
+                "The only way to do great work is to love what you do.",
+                "Excellence is not a destination; it is a continuous journey.",
+                "Your attitude determines your direction.",
+                "Great things never come from comfort zones.",
+                "Every accomplishment starts with the decision to try.",
+                "The future depends on what you do today.",
+                "Believe you can and you're halfway there.",
+                "Quality is not an act, it is a habit.",
+                "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+                "The expert in anything was once a beginner.",
+                "Don't watch the clock; do what it does. Keep going.",
+                "Opportunities don't happen, you create them.",
+                "Hard work beats talent when talent doesn't work hard.",
+                "The only impossible journey is the one you never begin."
+            ];
+            
+            // Use today's date as seed for consistent daily proverb
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+            const index = dayOfYear % proverbs.length;
+            
+            return proverbs[index];
+        }
+
+        // Get current date formatted
+        function getCurrentDate() {
+            const today = new Date();
+            const options = { weekday: 'long', month: 'long', day: 'numeric' };
+            return today.toLocaleDateString('en-US', options);
+        }
+
+        // Set proverb and date on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('dailyProverb').textContent = getProverbOfDay();
+            document.getElementById('currentDate').textContent = getCurrentDate();
+        });
+    </script>
+<style>.glass-effect {
+            background: rgba(28, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .shadow-soft {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+        }
+        .shadow-glow {
+            box-shadow: 0 0 20px rgba(87, 194, 0, 0.3);
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-base text-text-main antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto bg-background-base overflow-hidden shadow-2xl border-x border-white/5">
+<header class="pt-8 pb-4 px-6 bg-background-base">
+<div class="flex justify-between items-center">
+<div class="flex flex-col">
+<h1 class="text-text-main text-2xl font-bold tracking-tight">Good Morning, Alex</h1>
+</div>
+<div class="relative">
+<div class="h-12 w-12 rounded-full bg-gray-800 bg-center bg-cover border-2 border-background-surface shadow-sm overflow-hidden" data-alt="User profile photo avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0WsNBs7ujVIL_d9rN4tm3u31sf5c_K1ogFUbI9mKIBIeMtcnZ5hsII3kZyDaZfg015xkJwfz6leXqXxfZQuRZq6j9qXWRVWT0FYvsCAYVkEf1jsjZ7BTzEC1i9INKuVyN4E4f4M6YBERMlsA1rZEu3qPvErQyFRYJKBwpHQ84tLAKU4T8SKayHUmc8ucVWB3RWXGiB3ksb2t612H4o9wgeBy9Fr5VjoaJ0XtGTDVdzaG9goowQ-HAl9aMxKY75gwnQ8HrfGCCnvM");'>
+</div>
+<span class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-primary border-2 border-background-base"></span>
+</div>
+</div>
+</header>
+<main class="flex-1 px-6 pb-24 overflow-y-auto scrollbar-hide">
+<div class="bg-background-surface rounded-xl p-4 mb-4 shadow-soft border border-white/5 relative overflow-hidden group">
+<div class="absolute top-0 right-0 -mt-8 -mr-8 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+<div class="absolute bottom-0 left-0 -mb-8 -ml-8 w-24 h-24 bg-secondary/5 rounded-full blur-2xl"></div>
+<div class="relative flex flex-col items-center justify-center z-10">
+<h2 class="text-4xl font-bold text-text-main tracking-tight tabular-nums mb-2">08:59 <span class="text-xl text-text-muted font-medium ml-1">AM</span></h2>
+<p class="text-text-muted text-sm font-medium" id="currentDate">Wednesday, Oct 25</p>
+</div>
+</div>
+<!-- Day Message Section -->
+<div class="bg-background-surface rounded-xl p-4 my-4 shadow-soft border border-white/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 -mt-8 -mr-8 w-20 h-20 bg-primary/5 rounded-full blur-xl"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-lg">auto_awesome</span>
+<h3 class="text-text-main text-xs font-bold tracking-wide uppercase">Thought of the Day</h3>
+</div>
+<p id="dailyProverb" class="text-text-main text-center text-sm font-medium leading-relaxed px-2">
+<!-- Proverb will be inserted here by JavaScript -->
+</p>
+</div>
+</div>
+
+<!-- Recent Activity Section -->
+<section class="mt-6">
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-lg font-bold text-text-main">Recent Activity</h3>
+</div>
+<div class="flex flex-col gap-3 max-h-64 overflow-y-auto pr-1" style="scrollbar-width: thin; scrollbar-color: #57C200 #1C1A1A;">
+<div class="flex items-center justify-between p-3 rounded-xl bg-background-surface hover:bg-background-surface/50 transition-colors border border-white/5 shadow-soft">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10" data-alt="Profile picture of Sarah M." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3NHAEM3jD71wquqle4rz7FL-NgHYejJVLO1QdfctbVDhWKzeUeob4FG5DEsjSZZQQCvvzSb-SEtqY70N_0XYegMrt830kRWub7hr87DRpJPs0egBZsBHvE2GXWB8kLOsXlSeyzZ6_OKf88ZRmNT-gZSZt15c5eB1s9t_K5fq1bEtt5SaLAmL_aYnSi3PFZGVWnA9HUDlKqZo69SpgwezBqzQ2QNdZ-obbAgdWsQdZGh6c-RGZAsHjbV1XwZg2IxibwlWbWBIFaMo");'></div>
+<div>
+<p class="text-sm font-semibold text-text-main">Sarah M. checked in</p>
+<p class="text-xs text-text-muted">Product Design • 09:00 AM</p>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-medium">On Time</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-background-surface hover:bg-background-surface/50 transition-colors border border-white/5 shadow-soft">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10" data-alt="Profile picture of John D." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIpdOWTnZcEJa0gpbsqbyuBZqTA7IDD5XqsE36xfZLw3NEG5130D3EFSYeawOrPbi119WNf2VaONX6dSxc6jNbUw_fzqPYQdZ5IOQcQQRRUe4AaWpgA5AqcGYpgwZ4tHHoY-n5BkBXUKVEmGUECyCobyu6MWOKxzzCaUwg6g6qc4q_nJifvgHqnjyRflqCKg3GO5tPekNSwxCj8-0XzIP7V4ZVQ_HgjsiRpr0pNOnY2h3F4KKOL6p_XAu5MMq53pVFZjZkzGKiZ8g");'></div>
+<div>
+<p class="text-sm font-semibold text-text-main">John D. Late Arrival</p>
+<p class="text-xs text-text-muted">Engineering • 10:15 AM</p>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-yellow-500/10 text-yellow-500 text-xs font-medium">Late</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-background-surface hover:bg-background-surface/50 transition-colors border border-white/5 shadow-soft">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10" data-alt="Profile picture of Mike T." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfJP85QD2KfTTH5SVXMNo4aVjS3IyRe9XoigPBkCz_SmczIzmqE4_bZGNvamKyey3WNWp0eS-GiK6a4csJAw2MrZE95YlQsjS1AcIx6nnFhGJda8HdoFtU0BTqapYTaK8v3xVDIKTF2VTo2BMeJSuuEVt3FH5XxtOfO3TCJa9uTCyarIBZKaJQTWO90F5mB5oYT2LcnulLYmIyZuuhoijhONOvFnepKJAbygTL-8dmgk30xXVNhgx1IF9jVF1HvnK20dXogEkyogc");'></div>
+<div>
+<p class="text-sm font-semibold text-text-main">Mike T. Sick Leave</p>
+<p class="text-xs text-text-muted">Marketing • Today</p>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-red-500/10 text-red-400 text-xs font-medium">Absent</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-background-surface hover:bg-background-surface/50 transition-colors border border-white/5 shadow-soft">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10 bg-gray-700" data-alt="Profile picture of Emma R."></div>
+<div>
+<p class="text-sm font-semibold text-text-main">Emma R. checked in</p>
+<p class="text-xs text-text-muted">HR • 08:45 AM</p>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-medium">On Time</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-background-surface hover:bg-background-surface/50 transition-colors border border-white/5 shadow-soft">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10 bg-gray-600" data-alt="Profile picture of David L."></div>
+<div>
+<p class="text-sm font-semibold text-text-main">David L. checked out</p>
+<p class="text-xs text-text-muted">Sales • 06:30 PM</p>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-blue-500/10 text-blue-400 text-xs font-medium">Completed</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-background-surface hover:bg-background-surface/50 transition-colors border border-white/5 shadow-soft">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10 bg-gray-700" data-alt="Profile picture of Lisa K."></div>
+<div>
+<p class="text-sm font-semibold text-text-main">Lisa K. Late Arrival</p>
+<p class="text-xs text-text-muted">Finance • 10:30 AM</p>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-yellow-500/10 text-yellow-500 text-xs font-medium">Late</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-background-surface hover:bg-background-surface/50 transition-colors border border-white/5 shadow-soft">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10 bg-gray-600" data-alt="Profile picture of Robert P."></div>
+<div>
+<p class="text-sm font-semibold text-text-main">Robert P. checked in</p>
+<p class="text-xs text-text-muted">Operations • 09:05 AM</p>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-medium">On Time</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-background-surface hover:bg-background-surface/50 transition-colors border border-white/5 shadow-soft">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-white/10 bg-gray-700" data-alt="Profile picture of Anna S."></div>
+<div>
+<p class="text-sm font-semibold text-text-main">Anna S. Remote Work</p>
+<p class="text-xs text-text-muted">Development • Today</p>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-purple-500/10 text-purple-400 text-xs font-medium">Remote</div>
+</div>
+</div>
+</section>
+
+
+
+</main>
+<nav class="absolute bottom-0 left-0 w-full bg-background-surface border-t border-white/5 pb-safe pt-2 px-6 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] z-50">
+  <div class="flex justify-around items-center h-16">
+    <button onclick="navigate('home.html')" class="flex flex-col items-center justify-center gap-1 w-16 text-primary">
+      <span class="material-symbols-outlined filled text-2xl">grid_view</span>
+      <span class="text-[10px] font-medium">Dashboard</span>
+    </button>
+    <button onclick="navigate('clock.html')" class="flex flex-col items-center justify-center gap-1 w-16 text-gray-500 hover:text-white transition-colors">
+      <span class="material-symbols-outlined text-2xl">schedule</span>
+      <span class="text-[10px] font-medium">Clock</span>
+    </button>
+    <button onclick="navigate('enrollment.html')" class="flex flex-col items-center justify-center gap-1 w-16 text-gray-500 hover:text-white transition-colors">
+        <span class="material-symbols-outlined text-2xl">person_add</span>
+        <span class="text-[10px] font-medium">Enroll</span>
+    </button>
+  </div>
+  <div class="h-5 w-full"></div>
+</nav>
+
+</div>
+</body></html>

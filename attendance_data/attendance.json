@@ -1,0 +1,93 @@
+[
+    {
+        "Date": "2025-12-13",
+        "Employee_ID": "01",
+        "Name": "Abee",
+        "Check_In": "11:43:50",
+        "Check_Out": "11:43:57",
+        "Hours_Worked": "0.00",
+        "Status": "Complete",
+        "Emotion": "stressed"
+    },
+    {
+        "Date": "2025-12-13",
+        "Employee_ID": "01",
+        "Name": "Abee",
+        "Check_In": "13:16:20",
+        "Check_Out": "13:16:30",
+        "Hours_Worked": "0.00",
+        "Status": "Complete",
+        "Emotion": "happy"
+    },
+    {
+        "Date": "2025-12-13",
+        "Employee_ID": "01",
+        "Name": "Abee",
+        "Check_In": "13:24:21",
+        "Check_Out": "",
+        "Hours_Worked": "0",
+        "Status": "Present",
+        "Emotion": "neutral"
+    },
+    {
+        "Date": "2025-12-13",
+        "Employee_ID": "03",
+        "Name": "Abeee",
+        "Check_In": "16:33:49",
+        "Check_Out": "16:34:16",
+        "Hours_Worked": "0.01",
+        "Status": "Complete",
+        "Emotion": "happy -> neutral"
+    },
+    {
+        "Date": "2025-12-13",
+        "Employee_ID": "03",
+        "Name": "Abeee",
+        "Check_In": "16:34:59",
+        "Check_Out": "16:35:11",
+        "Hours_Worked": "0.00",
+        "Status": "Complete",
+        "Emotion": "neutral -> neutral"
+    },
+    {
+        "Date": "2025-12-13",
+        "Employee_ID": "03",
+        "Name": "Abeee",
+        "Check_In": "16:36:47",
+        "Check_Out": "",
+        "Hours_Worked": "0",
+        "Status": "Present",
+        "Emotion": "happy"
+    },
+    {
+        "Date": "2025-12-19",
+        "Employee_ID": "04",
+        "Name": "abinaya",
+        "Check_In": "12:15:27",
+        "Check_Out": "12:16:04",
+        "Hours_Worked": "0.01",
+        "Status": "Complete",
+        "Emotion": "neutral"
+    },
+    {
+        "Date": "2025-12-19",
+        "Employee_ID": "04",
+        "Name": "abinaya",
+        "Check_In": "12:47:20",
+        "Check_Out": "14:36:45",
+        "Hours_Worked": "1.82",
+        "Status": "Complete",
+        "Emotion": "happy",
+        "Mood": "Sad"
+    },
+    {
+        "Date": "2025-12-19",
+        "Employee_ID": "06",
+        "Name": "abeee",
+        "Check_In": "14:35:51",
+        "Check_Out": "14:37:20",
+        "Hours_Worked": "0.02",
+        "Status": "Complete",
+        "Mood": "Sad"
+    }
+]
